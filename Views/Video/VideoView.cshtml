@@ -11,8 +11,18 @@
         .t {
             text-align: center;
             vertical-align: middle;
+
+        
+        }
+        #videoWid{
+            width:300px;
         }
     </style>
+    <script>
+        $(document).ready(function ($) {
+            $(".gallery a").fancybox();
+        });
+    </script>
 </head>
 <div class="well-sm">
     <h2>Video View / Download / Delete</h2>
@@ -33,7 +43,9 @@
 
 
             <div>
-                <p><img src="~/App_Data/Media/Images/@file.FileName" /></p>
+                <p><a id="galleryItem" href="~/videos/@file.FileName"><video controls id="videoWid" class="witit">
+                                                                            <source src="~/videos/@file.FileName" />
+                                                                        </video></a></p>
                 <p>@file.FileName</p>
                 <p>
                     <button>

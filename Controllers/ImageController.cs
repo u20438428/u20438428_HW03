@@ -13,7 +13,7 @@ namespace u20438428_HW03.Controllers
         // GET: Image
         public ActionResult ImageView()
         {
-            string[] filePaths = Directory.GetFiles(Server.MapPath("~/App_Data/Media/Images/"));
+            string[] filePaths = Directory.GetFiles(Server.MapPath("~/images/"));
 
             List<FileModel> files = new List<FileModel>();
 
@@ -35,7 +35,7 @@ namespace u20438428_HW03.Controllers
         public FileResult DownloadFile(string fileName)
         {
 
-            string path = Server.MapPath("~/App_Data/Media/Images/") + fileName;
+            string path = Server.MapPath("~/images/") + fileName;
 
             byte[] bytes = System.IO.File.ReadAllBytes(path);
 
@@ -46,7 +46,7 @@ namespace u20438428_HW03.Controllers
         {
 
 
-            string path = Server.MapPath("~/App_Data/Media/Images/") + fileName;
+            string path = Server.MapPath("~/images/") + fileName;
             byte[] bytes = System.IO.File.ReadAllBytes(path);
 
             System.IO.File.Delete(path);

@@ -25,37 +25,40 @@ namespace u20438428_HW03.Controllers
         {
             
 
+            
+            
             if (files != null && files.ContentLength > 0)
             {
-                
 
-                var fileName = Path.GetFileName(files.FileName);
+
+                var fileNameTwo = Path.GetFileName(files.FileName);
 
                 var docRadio = Request.Form["doc"];
 
-                var path="";
-                
-                if(Answer=="A")
+                var pathTwo = "";
+
+                if (Answer == "A")
                 {
-                    path = Path.Combine(Server.MapPath("~/App_Data/Media/Documents"), fileName);
+                    pathTwo = Path.Combine(Server.MapPath("~/App_Data/Media/Documents/"), fileNameTwo);
                 }
-                else if(Answer == "B")
+
+                else if (Answer == "B")
                 {
-                    path = Path.Combine(Server.MapPath("~/App_Data/Media/Images"), fileName);
+                    pathTwo = Path.Combine(Server.MapPath("~/images/"), fileNameTwo);
                 }
                 else if (Answer == "C")
                 {
-                    path = Path.Combine(Server.MapPath("~/App_Data/Media/Videos"), fileName);
+                    pathTwo = Path.Combine(Server.MapPath("~/videos/"), fileNameTwo);
                 }
 
                 //var path = Path.Combine(Server.MapPath("~/App_Data/media/Documents"), fileName);
 
 
 
-                files.SaveAs(path);
+                files.SaveAs(pathTwo);
             }
 
-            
+
 
 
             return RedirectToAction("Index");
@@ -65,7 +68,7 @@ namespace u20438428_HW03.Controllers
 
         public ActionResult About()
         {
-            String path = Server.MapPath("~/person/");
+            String path = Server.MapPath("~/image/");
             string[] imagefiles = Directory.GetFiles(path);
             ViewBag.images = imagefiles;
 
