@@ -1,0 +1,61 @@
+﻿@using u20438428_HW03.Models
+@model List<FileModel>
+
+<head>
+    <style type="text/css">
+        .auto-style {
+            color: #FFFFFF;
+        }
+
+        .t {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<div class="well-sm">
+    <h2>File Download / Delete</h2>
+    <h5>
+        This is for deleting or downloading files of any type from the Documents folder
+    </h5>
+</div>
+
+@*
+    Will generate as item but can be renamed.
+*@
+<div style="height: 400px; overflow: auto;">
+    <div class="well-sm">
+        <table class="table table-condensed table-hover">
+            <thead style="position: sticky;top: 0">
+                <tr bgcolor="#222222" class="auto-style">
+                    <th class="col-lg-8">File Name</th>
+                    <th class="t, col-lg-2">DOWNLOAD</th>
+                    <th class="t, col-lg-2">DELETE</th>
+                </tr>
+            </thead>
+            @foreach (FileModel file in Model)
+            {
+                <tr>
+                    @*
+                        Default >> @Html.DisplayFor(modelItem => file.FileName)
+                    *@
+
+                    <td>@file.FileName</td>
+                    <td>
+                        <button>
+                            @Html.ActionLink("Download", "DownloadFile",
+                             new { fileName = file.FileName })
+                        </button>
+                    </td>
+                    <td>
+                        <button>
+                            @Html.ActionLink("DELETE", "DeleteFile",
+                           new { fileName = file.FileName },
+                           new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

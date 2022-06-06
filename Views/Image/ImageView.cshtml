@@ -1,0 +1,67 @@
+﻿
+@using u20438428_HW03.Models
+@model List<FileModel>
+
+<head>
+    <style type="text/css">
+        .auto-style {
+            color: #FFFFFF;
+        }
+
+        .t {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+    <script>
+        $(document).ready(function ($) {
+            $(".gallery a").fancybox();
+        });
+    </script>
+</head>
+<div class="well-sm">
+    <h2>Image Download / Delete</h2>
+    <h5>
+        This is for deleting or downloading images of any type from the Images folder
+    </h5>
+</div>
+
+@*
+    Will generate as item but can be renamed.
+*@
+<div style="height: 400px; overflow: auto;">
+    <div class="well-sm">
+
+        @foreach (FileModel file in Model)
+        {
+            
+
+
+            <div>
+                <div class="gallery">
+                    <p><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCommon_sunflower&psig=AOvVaw3furo8prZJv7YtRck8o-nt&ust=1654597270014000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJjy2qbNmPgCFQAAAAAdAAAAABAD" /></p>
+                </div>
+                
+                <p>@file.FileName</p>
+                <p>
+                    <button>
+                        @Html.ActionLink("Download", "DownloadFile",
+                         new { fileName = file.FileName })
+                    </button>
+
+                    <button>
+                        @Html.ActionLink("DELETE", "DeleteFile",
+                       new { fileName = file.FileName },
+                       new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                    </button>
+                </p>
+
+            </div>
+
+
+
+        }
+
+    </div>
+</div>
+

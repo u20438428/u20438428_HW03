@@ -1,0 +1,29 @@
+﻿<br />
+
+<div class="row">
+    <div class="col-sm-8">
+        <h5>Description</h5>
+        <br />
+        <br />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+    <div class="col-sm-4">
+        <h5>Option selection</h5>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+        {
+            <div>
+                @Html.RadioButton("Answer", "A") <span>Document</span><br />
+                @Html.RadioButton("Answer", "B") <span>Image</span><br />
+                @Html.RadioButton("Answer", "C") <span>Video</span><br />
+                
+            </div>
+            
+
+            <div><input type="file" name="files" /></div>
+            <br />
+            <div><input type="submit" value="Upload" /></div>
+        }
+    </div>
+</div>
